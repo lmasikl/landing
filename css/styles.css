@@ -6171,6 +6171,7 @@ button.close {
 body {
   padding-top: 70px;
   padding-bottom: 35px;
+  background-color: #eeeeee;
 }
 .landing-navbar {
   position: relative;
@@ -6473,6 +6474,7 @@ fieldset[disabled] .landing-navbar .btn-link:focus {
   border: 1px solid #dddddd;
   -webkit-box-shadow: 0 2px 3px #777777;
   box-shadow: 0 2px 3px #777777;
+  margin-bottom: 10px;
 }
 .page-header {
   text-align: center;
