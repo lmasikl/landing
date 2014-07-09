@@ -1,13 +1,29 @@
 @import "bootstrap.less";
 
-@import "http://webfonts.ru/import/bender.css";
-@import "http://webfonts.ru/import/fontin.css";
+@import "http://webfonts.ru/import/comfortaa.css";
 
-@font-family-serif:  "Bender";
-@font-family-sans-serif:       'Fontin Sans';
+@font-family-sans-serif: 'Comfortaa';
 
-@navbar-default-bg: #ffffff;
-@navbar-default-border: #eeeeee;
+@landing-yellow: rgba(255, 250, 12, 0.75);
+@landing-black: rgba(0, 0, 0, 1);
+@landing-blue: rgba(0, 29, 66, 0.75);
+
+@navbar-default-bg: @landing-yellow;
+@navbar-default-border: @landing-black;
+
+@panel-default-text: @landing-black;
+@panel-default-border: @landing-black;
+@panel-default-heading-bg: @landing-yellow;
+
+@btn-primary-bg: @landing-blue;
+@btn-primary-border: @landing-black;
+
+@input-border-focus: @landing-blue;
+
+body {
+  padding-top: 70px;
+  padding-bottom: 35px;
+}
 
 .landing-navbar {
   .navbar;
@@ -15,12 +31,7 @@
   .navbar-fixed-top;
 }
 
-.landing-map {
-  height: 350px;
-}
-
-.landing-container {
-  .container;
-  padding-top: 25px;
-  padding-bottom: 25px;
+.landing-panel {
+  .panel;
+  .panel-default;
 }
