@@ -1,4 +1,5 @@
 landing =
+  dismiss_btn: '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>'
   recipient:
     email: 'maxim.krivodaev@gmail.com'
     type: 'to'
@@ -18,16 +19,14 @@ landing =
         subject: landing.subject
         html: html
 
-    $.ajax(
+    $.ajax
       type: 'POST'
-      dataType: 'jsonp'
       url: url
       data: data
-    ).done( (r) ->
-      console.log r
-    ).error( (e) ->
-      console.log e
-    )
+      dataType: 'JSONP'
+      success: -> $('#messages').html('<div class="alert alert-success">Message send</div>')
+      error: -> $('#messages').html('<div class="alert alert-danger">Message NOT send</div>')
+
     landing.subject = 'Contact form'
 
 $(document).ready ->
@@ -38,8 +37,10 @@ $(document).ready ->
     contacts.find('#InputMessage').val(this.value)
     contacts.modal 'show'
 
-  $('#sendContactForm').click ->
+  $('#sendContactForm').click (e) ->
+    e.preventDefault()
     from = contacts.find('#InputEmail').val()
     html = contacts.find('#InputMessage').val()
     from = 'maxim.krivodaev@gmail.com'
     landing.send_email from, html
+    contacts.modal 'hide'

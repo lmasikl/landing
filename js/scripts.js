@@ -3,6 +3,7 @@
   var landing;
 
   landing = {
+    dismiss_btn: '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>',
     recipient: {
       email: 'maxim.krivodaev@gmail.com',
       type: 'to'
@@ -29,13 +30,15 @@
       };
       $.ajax({
         type: 'POST',
-        dataType: 'jsonp',
         url: url,
-        data: data
-      }).done(function(r) {
-        return console.log(r);
-      }).error(function(e) {
-        return console.log(e);
+        data: data,
+        dataType: 'JSONP',
+        success: function() {
+          return $('#messages').html('<div class="alert alert-success">Message send</div>');
+        },
+        error: function() {
+          return $('#messages').html('<div class="alert alert-danger">Message NOT send</div>');
+        }
       });
       return landing.subject = 'Contact form';
     }
@@ -49,12 +52,14 @@
       contacts.find('#InputMessage').val(this.value);
       return contacts.modal('show');
     });
-    return $('#sendContactForm').click(function() {
+    return $('#sendContactForm').click(function(e) {
       var from, html;
+      e.preventDefault();
       from = contacts.find('#InputEmail').val();
       html = contacts.find('#InputMessage').val();
       from = 'maxim.krivodaev@gmail.com';
-      return landing.send_email(from, html);
+      landing.send_email(from, html);
+      return contacts.modal('hide');
     });
   });
 
